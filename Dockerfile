@@ -9,6 +9,5 @@ COPY vendor/ vendor/
 RUN go build -o bin/broker -ldflags "$LDFLAGS" ./cmd/broker
 RUN mkdir /app && \
     cp bin/broker /app/broker
-RUN /app/broker -v
 CMD ["/app/broker"]
 EXPOSE 8080
