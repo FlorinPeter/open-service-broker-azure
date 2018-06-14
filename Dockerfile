@@ -9,7 +9,7 @@ COPY vendor/ vendor/
 RUN go build -o bin/broker -ldflags "$LDFLAGS" ./cmd/broker
 RUN mkdir /app && \
     cp bin/broker /app/broker
-RUN /app/broker --version
+RUN /app/broker -v
 #FROM scratch
 #ARG BASE_PACKAGE_NAME
 #COPY /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
