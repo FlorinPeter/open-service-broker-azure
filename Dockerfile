@@ -6,7 +6,7 @@ WORKDIR /go/src/$BASE_PACKAGE_NAME/
 COPY cmd/broker cmd/broker
 COPY pkg/ pkg/
 COPY vendor/ vendor/
-#COPY .git/ .git/
+COPY .git/ .git/
 RUN ls -la && pwd && export GIT_VERSION=$(git describe --always --abbrev=7 --dirty)
 RUN find / -type d -name ".git" && find / -name ".gitignore" && find / -name ".gitmodules" 
 RUN go build -o bin/broker -ldflags "$LDFLAGS" ./cmd/broker
