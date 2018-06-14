@@ -7,7 +7,8 @@ COPY cmd/broker cmd/broker
 COPY pkg/ pkg/
 COPY vendor/ vendor/
 RUN go build -o bin/broker -ldflags "$LDFLAGS" ./cmd/broker
-COPY bin/broker /app/broker
+RUN mkdir /app && \
+    cp bin/broker /app/broker
 RUN /app/broker --version
 #FROM scratch
 #ARG BASE_PACKAGE_NAME
