@@ -7,7 +7,8 @@ COPY cmd/broker cmd/broker
 COPY pkg/ pkg/
 COPY vendor/ vendor/
 RUN go build -o bin/broker -ldflags "$LDFLAGS" ./cmd/broker
-RUN mkdir /app && \
+RUN env && \
+    mkdir /app && \
     cp bin/broker /app/broker
 RUN /app/broker -v
 #FROM scratch
