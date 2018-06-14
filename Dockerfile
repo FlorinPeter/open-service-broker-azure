@@ -6,9 +6,9 @@ WORKDIR /go/src/$BASE_PACKAGE_NAME/
 COPY cmd/broker cmd/broker
 COPY pkg/ pkg/
 COPY vendor/ vendor/
+RUN export GIT_VERSION=$(git describe --always --abbrev=7 --dirty)
 RUN go build -o bin/broker -ldflags "$LDFLAGS" ./cmd/broker
-RUN env && \
-    mkdir /app && \
+RUN mkdir /app && \
     cp bin/broker /app/broker
 RUN /app/broker -v
 #FROM scratch
