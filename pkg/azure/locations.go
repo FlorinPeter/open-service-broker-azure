@@ -33,6 +33,8 @@ var locations = []string{
 	"westindia",
 	"westus",
 	"westus2",
+	"germanycentral",
+	"germanynortheast"
 }
 
 // IsValidLocation returns a bool indicating whether the provided location is a
