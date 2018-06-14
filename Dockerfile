@@ -7,10 +7,11 @@ COPY cmd/broker cmd/broker
 COPY pkg/ pkg/
 COPY vendor/ vendor/
 RUN go build -o bin/broker -ldflags "$LDFLAGS" ./cmd/broker
-
+COPY bin/broker /app/broker
+RUN /app/broker --version
 #FROM scratch
-ARG BASE_PACKAGE_NAME
+#ARG BASE_PACKAGE_NAME
 #COPY /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
-COPY /go/src/$BASE_PACKAGE_NAME/bin/broker /app/broker
+#COPY /go/src/$BASE_PACKAGE_NAME/bin/broker /app/broker
 CMD ["/app/broker"]
 EXPOSE 8080
