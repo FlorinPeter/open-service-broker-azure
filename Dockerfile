@@ -8,9 +8,9 @@ COPY pkg/ pkg/
 COPY vendor/ vendor/
 RUN go build -o bin/broker -ldflags "$LDFLAGS" ./cmd/broker
 
-FROM scratch
+#FROM scratch
 ARG BASE_PACKAGE_NAME
-COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
-COPY --from=0 /go/src/$BASE_PACKAGE_NAME/bin/broker /app/broker
+COPY /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY /go/src/$BASE_PACKAGE_NAME/bin/broker /app/broker
 CMD ["/app/broker"]
 EXPOSE 8080
